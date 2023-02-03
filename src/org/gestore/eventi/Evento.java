@@ -1,6 +1,8 @@
 package org.gestore.eventi;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Evento {
 
@@ -56,4 +58,25 @@ public class Evento {
 		this.numeroPostiTotale = numeroPostiTotale;
 	}
 	
+	public void prenota(int numeroPostiTotale, int numeroPostiPrenotati) throws Exception{
+		if (numeroPostiTotale == numeroPostiPrenotati || data.isBefore(LocalDate.now())) {
+			throw new Exception("Data non valida o posti non disponibili");
+		}
+		
+		this.numeroPostiPrenotati++;
+	}
+	
+	public void disdici(int numeroPostiPrenotati) throws Exception{
+		if (numeroPostiPrenotati == 0 || data.isBefore(LocalDate.now())) {
+			throw new Exception("Data non valida o nessun posto prenotato");
+		}
+		
+		this.numeroPostiPrenotati--;
+	}
+	
+	@Override
+	public String toString() {
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(Locale.ITALIAN);
+		return df +" - "+ getTitolo() ;
+	}
 }
