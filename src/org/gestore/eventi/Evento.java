@@ -42,7 +42,7 @@ public class Evento {
 	}
 
 	public int getNumeroPostiTotale() {
-		return numeroPostiTotale;
+		return numeroPostiTotale - numeroPostiPrenotati;
 	}
 
 	public int getNumeroPostiPrenotati() {
@@ -58,7 +58,7 @@ public class Evento {
 		this.numeroPostiTotale = numeroPostiTotale;
 	}
 	
-	public void prenota(int numeroPostiTotale, int numeroPostiPrenotati) throws Exception{
+	public void prenota() throws Exception{
 		if (numeroPostiTotale == numeroPostiPrenotati || data.isBefore(LocalDate.now())) {
 			throw new Exception("Data non valida o posti non disponibili");
 		}
@@ -66,13 +66,14 @@ public class Evento {
 		this.numeroPostiPrenotati++;
 	}
 	
-	public void disdici(int numeroPostiPrenotati) throws Exception{
-		if (numeroPostiPrenotati == 0 || data.isBefore(LocalDate.now())) {
+	public void disdici() throws Exception{
+		if (numeroPostiPrenotati <= 0 || data.isBefore(LocalDate.now())) {
 			throw new Exception("Data non valida o nessun posto prenotato");
 		}
 		
 		this.numeroPostiPrenotati--;
 	}
+	
 	
 	@Override
 	public String toString() {
