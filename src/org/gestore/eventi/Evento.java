@@ -74,10 +74,13 @@ public class Evento {
 		this.numeroPostiPrenotati--;
 	}
 	
+	public DateTimeFormatter data() {
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(Locale.ITALIAN);
+		return df;
+	}
 	
 	@Override
 	public String toString() {
-		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(Locale.ITALIAN);
-		return df +" - "+ getTitolo() ;
+		return data() +" - "+ getTitolo();
 	}
 }
