@@ -41,16 +41,19 @@ public class Concerto extends Evento {
 	}
 	
 	
-	public String dataOra() {
+	public String data(LocalDate data) {
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(Locale.ITALIAN);
+		return data.format(df) ;
+	}
+	
+	public String ora(LocalTime ora) {
 		DateTimeFormatter dft = DateTimeFormatter.ofPattern("hh:mm").withLocale(Locale.ITALIAN);
-		
-		return df +" - "+ dft;
+		return  ora.format(dft);
 	}
 
 	@Override
 	public String toString() {
-		return dataOra() + " - " + getTitolo() + " - " + prezzoFormattato();
+		return data(data) + " - " + ora(ora) + " - " + getTitolo() + " - " + prezzoFormattato();
 	}
 	 
 	

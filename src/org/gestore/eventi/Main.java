@@ -103,7 +103,7 @@ public class Main {
 				
 				scan.close();
 				
-				System.out.println(eventi.getData() + "-" + eventi.getTitolo());
+				System.out.println(eventi.data() + "-" + eventi.getTitolo());
 				
 		} else if (eventoString.equals("concerto")) {
 			Scanner sc = new Scanner(System.in);
@@ -143,7 +143,7 @@ public class Main {
 			sc.close();
 			
 			
-			System.out.println("arrivederci");
+			System.out.println(concerti.data(data) + " - " + concerti.ora(ora) + " - " + concerti.getTitolo() + " - " + concerti.prezzoFormattato());
 			
 		}
 	}
